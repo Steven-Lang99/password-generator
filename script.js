@@ -1,22 +1,33 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function generatePassword(){
-    var wantsUppercase = confirm('Do you want uppercase?');//true or false
-    var lowerCase = confirm('lowercase?');
-    var length = prompt('How many between 8 and 128');
-    var passwordResult = '';
+function generatePassword() {
+  var passlength = window.prompt('How many between 8 and 128');
+  var uppercase = confirm('Do you want uppercase?');
+  var lowerCase = confirm('Do you want lowercase?');
+  var numbers = confirm('Do you want numbers?')
+  var symbol = confirm('Do you want symbols?')
 
-    length = Number(length); //turning a sting into a number
 
-    if( uppercase) {
-      //add some uppercase letters to our result
-    } else if(lowerCase === true) {
-      //add some lowercase to our result
-    } //if my length is "130" how do I check it's value instead of it's type?
-    else if (length ==)
 
-return passwordResult;
+  if (length < 8 || length > 128) {
+    console.log('That is not a number')
+  }
+    else if(length > 8 || length < 128){
+    }
+   
+    var orderUppercase
+    var orderLowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    var orderNumbers = ["0","1","2","3","4","5","6","7","8","9"]
+    var orderSymbol = ["!",'"',"#","$","%","&","'","(", ")","*","+",",","-",".","/",":",";","<","=",">","?","@","[",'U+005C','U+005D',"^","_","`","{","|",".","U+007D","U+007E"]
+     var output []
+
+
+     for (var i = 0; i < orderLowercase.length; i++){
+      orderUppercase[i] = orderLowercase[i].toUpperCase()
+     }
+
+  // return passwordResult;
 }
 
 // Write password to the #password input
@@ -28,5 +39,5 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
+// // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
