@@ -25,7 +25,7 @@ function generatePassword() {
   var orderLowercase = 'abcdefghijklmnopqrstuvwxyz'
   var orderNumbers = '0123456789'
   var orderSymbol = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-  var output = [orderUppercase,orderLowercase,orderNumbers,orderSymbol]
+  var output = []
 
 
 // if statment for the password length
@@ -37,17 +37,17 @@ function generatePassword() {
 
 // if statements to output the different criteria
   if (upperCase === true) {
-    output += orderUppercase
+    output.push(orderUppercase)
   }
 
   if (lowerCase === true) {
-    output += orderLowercase
+    output.push(orderLowercase)
   }
   if (numbers === true) {
-    output += orderNumbers
+    output.push(orderNumbers)
   }
   if (symbol === true) {
-    output += orderSymbol
+    output.push(orderSymbol)
   }
 
 // for loop to randomize the output array in a random order
