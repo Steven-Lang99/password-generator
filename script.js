@@ -2,41 +2,39 @@
 var generateBtn = document.querySelector("#generate");
 
 function randomNum(min,max){
-if (!max){
-  max = min
-  min = 0
-}
-var random = Math.random()
-return Math.floor(min*(1 - random) + random*max)
-}
-function getRandomItem(list) {
-  return list[randomNum(list.length - 1)]
-}
+  if (!max){
+    max = min
+    min = 0
+  }
+  
+  var random = Math.random()
+  return Math.floor(min*(1 - random) + random*max)
+  }
+  function getRandomItem(list) {
+    return list[randomNum(list.length)]
+  }
 
 function generatePassword() {
   var passLength = prompt('How many between 8 and 128');
-  var words = parseInt (passLength)
   var upperCase = confirm('Do you want uppercase?');
   var lowerCase = confirm('Do you want lowercase?');
   var numbers = confirm('Do you want numbers?')
   var symbol = confirm('Do you want symbols?')
   var passwordResults = '';
-  var orderUppercase = []
-  var orderLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  var orderNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-  var orderSymbol = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", 'U+005C', 'U+005D', "^", "_", "`", "{", "|", ".", "U+007D", "U+007E"]
+  var orderUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  var orderLowercase = 'abcdefghijklmnopqrstuvwxyz'
+  var orderNumbers = '0123456789'
+  var orderSymbol = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
   var output = []
 
-  if (words < 8 || words > 128) {
-    console.log('That is not a valid number of characters')
+  
+
+  if (passLength < 8 || passLength > 128) {
+    window.alert('That is not a valid number of characters')
   }
-  else if (words > 8 || words < 128) {
+  else if (passLength > 8 || passLength < 128) {
   }
 
-
-  for (var i = 0; i < orderLowercase.length; i++) {
-    orderUppercase[i] = orderLowercase[i].toUpperCase()
-  }
 
   if (upperCase === true) {
     output.push(orderUppercase)
@@ -51,8 +49,16 @@ function generatePassword() {
   if (symbol === true) {
     output.push(orderSymbol)
   }
+
   
-console.log (output)
+  for (var i = 0; i < passLength; i++) {
+    var randomOrder = getRandomItem(output)
+    var randomCharacter = getRandomItem(randomOrder)
+    passwordResults += randomCharacter
+  }
+  
+    return passwordResults;
+
 
 }
 
