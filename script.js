@@ -1,18 +1,18 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-function randomNum(min,max){
-  if (!max){
+function randomNum(min, max) {
+  if (!max) {
     max = min
     min = 0
   }
-  
+
   var random = Math.random()
-  return Math.floor(min*(1 - random) + random*max)
-  }
-  function getRandomItem(list) {
-    return list[randomNum(list.length)]
-  }
+  return Math.floor(min * (1 - random) + random * max)
+}
+function getRandomItem(list) {
+  return list[randomNum(list.length)]
+}
 
 function generatePassword() {
   var passLength = prompt('How many between 8 and 128');
@@ -25,9 +25,9 @@ function generatePassword() {
   var orderLowercase = 'abcdefghijklmnopqrstuvwxyz'
   var orderNumbers = '0123456789'
   var orderSymbol = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
-  var output = []
+  var output = [orderUppercase,orderLowercase,orderNumbers,orderSymbol]
 
-  
+
 
   if (passLength < 8 || passLength > 128) {
     window.alert('That is not a valid number of characters')
@@ -37,27 +37,27 @@ function generatePassword() {
 
 
   if (upperCase === true) {
-    output.push(orderUppercase)
+    output += orderUppercase
   }
 
   if (lowerCase === true) {
-    output.push(orderLowercase)
+    output += orderLowercase
   }
   if (numbers === true) {
-    output.push(orderNumbers)
+    output += orderNumbers
   }
   if (symbol === true) {
-    output.push(orderSymbol)
+    output += orderSymbol
   }
 
-  
+
   for (var i = 0; i < passLength; i++) {
     var randomOrder = getRandomItem(output)
     var randomCharacter = getRandomItem(randomOrder)
     passwordResults += randomCharacter
   }
-  
-    return passwordResults;
+
+  return passwordResults;
 
 
 }
