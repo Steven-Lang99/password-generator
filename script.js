@@ -1,6 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-
+//function to get random number
 function randomNum(min, max) {
   if (!max) {
     max = min
@@ -13,7 +13,7 @@ function randomNum(min, max) {
 function getRandomItem(list) {
   return list[randomNum(list.length)]
 }
-
+//prompts for inputing criteria
 function generatePassword() {
   var passLength = prompt('How many between 8 and 128');
   var upperCase = confirm('Do you want uppercase?');
@@ -28,14 +28,14 @@ function generatePassword() {
   var output = [orderUppercase,orderLowercase,orderNumbers,orderSymbol]
 
 
-
+// if statment for the password length
   if (passLength < 8 || passLength > 128) {
     window.alert('That is not a valid number of characters')
   }
   else if (passLength > 8 || passLength < 128) {
   }
 
-
+// if statements to output the different criteria
   if (upperCase === true) {
     output += orderUppercase
   }
@@ -50,7 +50,7 @@ function generatePassword() {
     output += orderSymbol
   }
 
-
+// for loop to randomize the output array in a random order
   for (var i = 0; i < passLength; i++) {
     var randomOrder = getRandomItem(output)
     var randomCharacter = getRandomItem(randomOrder)
